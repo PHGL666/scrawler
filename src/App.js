@@ -1,20 +1,26 @@
 import React from 'react';
-import './App.css';
-import ScrawlyList from "./containers/ScrawlyList";
+import './css/normalize.css';
+import './css/skeleton.css';
+import './font-awesome/css/font-awesome.min.css';
+import './css/style.css';
+import {Route, Switch} from "react-router-dom";
 import ScrawlyHomepage from "./containers/ScrawlyHomepage";
 import NewScrawlyInitiate from "./containers/NewScrawlyInitiate";
-import NewScrawlyEdit from "./components/NewScrawlyEdit";
+import NewScrawlyEdit from "./containers/NewScrawlyEdit";
+import Scrawly_1_master from "./containers/Scrawly_1_master";
+
 
 function App() {
     return (
         <div className="App">
-            <ScrawlyHomepage/>
-            <NewScrawlyInitiate/>
-            <NewScrawlyEdit/>
-            <ScrawlyList/>
+                <Switch>
+                    <Route path="/" exact component={ScrawlyHomepage} />
+                    <Route path="/ScrawlyInitate" exact component={NewScrawlyInitiate} />
+                    <Route path="/ScrawlyEdit" exact component={NewScrawlyEdit} />
+                    <Route path="/ScrawlyMaster" exact componoent={Scrawly_1_master} />
+                </Switch>
         </div>
     );
 }
 
 export default App;
-

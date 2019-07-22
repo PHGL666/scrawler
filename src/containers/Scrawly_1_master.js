@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {scrawlyAdd} from "../actions/scrawly";
-import NewScrawlyInitiate from "../components/NewScrawlyInitiate";
+import Scrawly_1_master from "../components/Scrawly_1_master";
 
 
 // Envoyer des données du state au composant
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(NewScrawlyInitiate)
+)(Scrawly_1_master)

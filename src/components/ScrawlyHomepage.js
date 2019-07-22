@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from "react-router-dom";
 
 class ScrawlyHomepage extends Component {
     // 2 il faut un state pour gérer la valeur de l'input donc on créer le constructor
@@ -24,20 +25,20 @@ class ScrawlyHomepage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="homepage bg-blue">
                 <form onSubmit={event => this.handleSubmit(event)}>
                     <h1><em>SCRAWLY</em></h1>
                     <div>
                         <label htmlFor="slug">Tape ton Slug et rejoints l'évènement !</label><br/>
                         <input type="text" name="slug" value={this.state.value}
                                onChange={event => this.handleChange(event)} placeholder="Slug du Scrawly"/>
-                    <button type="submit" className="button button-primary">
+                    <NavLink to='SCRAWLY' type="submit" className="button button-primary">
                         <i>GO !</i>
-                    </button>
+                    </NavLink>
                     </div>
-                    <button type="submit" className="button button-primary">
-                        <i>Créer un nouveau Scrawly</i>
-                    </button>
+                    <NavLink to='ScrawlyInitate' type="submit" className="button btn">
+                        <i className="fa fa-plus"> Créer un nouveau Scrawly</i>
+                    </NavLink>
                 </form>
             </div>
         );

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from "react-router-dom";
 
 class NewScrawlyInitiate extends Component {
     // 2 il faut un state pour gérer la valeur de l'input donc on créer le constructor
@@ -28,22 +29,27 @@ class NewScrawlyInitiate extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={event => this.handleSubmit(event)}>
-                    <h1><em>INITIALISER UN SCRAWLY</em></h1>
-                    <div>
-                        <label htmlFor="title">Titre</label><br/>
-                        <input type="text" name="title" value={this.state.value}
-                               onChange={event => this.handleChange(event)} placeholder="Anniversaire de Johny"/>
-                    </div>
-                    <div>
-                        <label htmlFor="slug">Slug</label><br/>
-                        <input type="text" name="slug" value={this.state.value}
-                               onChange={event => this.handleChange(event)} placeholder="Slug du scrawly"/>
-                    </div>
-                    <button type="submit" className="button button-primary">
-                        <i>+ Créer un nouveau Scrawly & ajouter des dates !</i>
-                    </button>
-                </form>
+                <section className="bg-blue">
+                    <h1>INITIALISER UN SCRAWLY</h1>
+                </section>
+                <section className="container form-new">
+                    <form onSubmit={event => this.handleSubmit(event)}>
+                        <div>
+                            <label htmlFor="title">Titre</label><br/>
+                            <input type="text" name="title" value={this.state.value}
+                                   onChange={event => this.handleChange(event)} placeholder="Anniversaire de Johny"/>
+                        </div>
+                        <div>
+                            <label htmlFor="slug">Slug</label><br/>
+                            <input type="text" name="slug" value={this.state.value}
+                                   onChange={event => this.handleChange(event)} placeholder="Slug du scrawly"/>
+                        </div>
+                        <NavLink to='/ScrawlyEdit' type="submit" className="button btn">
+                            <i className="fa fa-long-arrow-right"> Créer le Scrawly & ajouter des dates !</i>
+                        </NavLink>
+                    </form>
+                </section>
+
             </div>
         );
     }

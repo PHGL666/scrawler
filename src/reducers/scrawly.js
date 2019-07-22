@@ -1,21 +1,15 @@
-import {SCRAWLY_ADD, SCRAWLY_REMOVE} from '../actions/todo';
+import {SCRAWLY_ADD, SCRAWLY_REMOVE} from '../actions/scrawly';
 
 const initialState = {
-    scrawlies: [
+    title: "",
+    slug: "",
+    choices: [
 
     ]
 };
-/*
-const initialState = {
-scrawl: [
-title: ''
-slug: ''
-choices: [
-]
 
- */
 
-function todoApp(state = initialState, action) {
+function scrawlyApp(state = initialState, action) {
     switch (action.type) {
         case SCRAWLY_ADD:
             return { scrawlies: [...state.scrawlies, action.payload] };// tu prends tous les items existant (...) et tu rajoutes le dernier item crée. Le spread operator permet de ne pas recréer un tableau dans un tableau.
@@ -26,4 +20,4 @@ function todoApp(state = initialState, action) {
     }
 }
 
-export default todoApp;
+export default scrawlyApp;

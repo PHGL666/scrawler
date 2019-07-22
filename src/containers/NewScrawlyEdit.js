@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {scrawlyAdd} from "../actions/todo";
+import {scrawlyAdd} from "../actions/scrawly";
 import NewScrawlyEdit from "../components/NewScrawlyEdit";
 
 

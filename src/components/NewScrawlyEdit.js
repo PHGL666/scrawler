@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from "react-router-dom";
 
 class NewScrawlyEdit extends Component {
     // 2 il faut un state pour gérer la valeur de l'input donc on créer le constructor
@@ -28,28 +29,33 @@ class NewScrawlyEdit extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={event => this.handleSubmit(event)}>
-                    <h1><em>EDITER LE SCRAWLY</em></h1>
-                    <div>
-                        <label htmlFor="title">Titre</label><br/>
-                        <input type="text" name="title" value={this.state.value}
-                               onChange={event => this.handleChange(event)} placeholder="Anniversaire de Johny"/>
-                    </div>
-                    <div>
-                        <h3>Dates proposées pour le Scrawly</h3>
-                        <ul>
-                            <li>dates ajoutées</li>
-                            <li>dates ajoutées</li>
-                            <li>dates ajoutées</li>
-                        </ul>
-                        <input type="date" name="date" value={this.state.value}
-                               onChange={event => this.addDate(event)}/>
-                    </div>
-                    <div>
-                    <button type="submit" className="button button-primary"><i>+ Ajouter une date</i></button>
-                    </div>
-                    <button type="submit" className="button button-success"><i>VALIDER</i></button>
-                </form>
+                <section className="bg-blue">
+                    <h1>EDITER LE SCRAWLY</h1>
+                </section>
+                <section className="container form-new">
+                    <form onSubmit={event => this.handleSubmit(event)}>
+                        <div>
+                            <label htmlFor="title">Titre</label><br/>
+                            <input type="text" name="title" value={this.state.value}
+                                   onChange={event => this.handleChange(event)} placeholder="Anniversaire de Johny"/>
+                        </div>
+                        <div>
+                            <p>Proposez des dates pour votre évènement :</p>
+                            <ul>
+                                <li>dates ajoutées</li>
+                                <li>dates ajoutées</li>
+                                <li>dates ajoutées</li>
+                            </ul>
+                            <input type="date" name="date" value={this.state.value}
+                                   onChange={event => this.addDate(event)}/>
+                        </div>
+                        <div>
+                            <button type="submit" className="button button-primary"><i className="fa fa-plus"> Ajouter une date</i></button>
+                        </div>
+                        <NavLink to="/ScrawlyMaster" type="submit" className="button btn"><i className="fa fa-check"> VALIDER</i></NavLink>
+                    </form>
+                </section>
+
             </div>
         );
     }
