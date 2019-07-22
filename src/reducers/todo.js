@@ -2,9 +2,7 @@ import {SCRAWLY_ADD, SCRAWLY_REMOVE} from '../actions/todo';
 
 const initialState = {
     scrawlies: [
-        { value: "Course à vélo", done: false },
-        { value: "Manifestation du Samedi", done: false },
-        { value: "Anniversaire Yann", done: true }
+
     ]
 };
 /*

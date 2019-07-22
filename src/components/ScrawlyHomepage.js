@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class NewScrawly extends Component {
+class ScrawlyHomepage extends Component {
     // 2 il faut un state pour gérer la valeur de l'input donc on créer le constructor
     constructor(props) {
         super(props);
@@ -22,25 +22,21 @@ class NewScrawly extends Component {
         this.setState({value: ""}); // remet la valeur à vide
     }
 
-    /* 1 ligne 30 on crée le formulaire*/
-
-    /* 4 ligne 34 on rajoute la valeur et dans dans le handlechange on appelle l'evenenent event et on l'envoie au handlechange(event) pour se renouveller */
     render() {
         return (
             <div>
                 <form onSubmit={event => this.handleSubmit(event)}>
+                    <h1><em>SCRAWLY</em></h1>
                     <div>
-                        <label htmlFor="title">Titre</label>
-                        <input type="text" name="title" value={this.state.value}
-                               onChange={event => this.handleChange(event)}/>
-                    </div>
-                    <div>
-                        <label htmlFor="slug">Slug</label>
+                        <label htmlFor="slug">Tape ton Slug et rejoints l'évènement !</label><br/>
                         <input type="text" name="slug" value={this.state.value}
-                               onChange={event => this.handleChange(event)}/>
+                               onChange={event => this.handleChange(event)} placeholder="Slug du Scrawly"/>
+                    <button type="submit" className="button button-primary">
+                        <i>GO !</i>
+                    </button>
                     </div>
                     <button type="submit" className="button button-primary">
-                        <i>Créer un nouveau Scrawly et ajouter des dates !</i>
+                        <i>Créer un nouveau Scrawly</i>
                     </button>
                 </form>
             </div>
@@ -48,4 +44,4 @@ class NewScrawly extends Component {
     }
 }
 
-export default NewScrawly;
+export default ScrawlyHomepage;

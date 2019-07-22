@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+:root {
+    --main-bg-color: white;
+    --secondary-bg-color: #4f94d2;
+    --main-btn-bg-color: #f78570;
+    --main-btn-font-color: white;
+}
+
+* {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+h1 {
+    margin: 0.5em 0;
+    font-style: italic;
+    color: white;
+}
+
+.btn,
+input[type=submit] {
+    color: var(--main-btn-font-color);
+    background-color: var(--main-btn-bg-color);
+    text-decoration: none;
+}
+
+.btn {
+    padding: 0 30px;
+    text-align: center;
+    line-height: 38px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: #333;
+    border-color: #888;
+    outline: 0;
+}
+
+.bg-blue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--secondary-bg-color);
+}
+
+.homepage {
+    height: 100vh;
+}
+
+table.poll {
+    margin: 0 auto;
+}
+
+table.poll thead th .date-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+table.poll thead tr th .date-container .month {
+    font-size: 1.2em;
+}
+
+table.poll thead tr th .date-container .date {
+    font-size: 2em;
+}
+
+table.poll tbody tr td {
+    text-align: center;
+}
+
+table.poll tbody tr td .user-container {
+    display: flex;
+    align-items: center;
+}
+
+table.poll tbody tr td .user-container img {
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+table.poll tbody tr:not(:last-child) td.available,
+table.poll tbody tr:not(:last-child) td.unavailable {
+    border-bottom: 1px solid white;
+}
+
+table.poll tbody tr td.available {
+    background-color: #CDEAA1;
+    color: #87C627;
+}
+
+table.poll tbody tr td.unavailable {
+    background-color: #FCEDE9;
+    color: #fc6d6c;
+}
+
+table.poll tbody tr td .user-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+table.poll tbody tr td input[type=checkbox] {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+}
+
+table.poll tbody tr td button {
+    height: auto;
+    padding: 1em;
+    line-height: normal;
+}
+
+.form-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+}
