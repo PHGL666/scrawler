@@ -1,21 +1,20 @@
 import {connect} from "react-redux";
-import {scrawlyAdd, scrawlyRemove, updateSlug} from "../actions/scrawly";
+import {updateSlug, searchScrawl} from "../actions/scrawly";
 import ScrawlyHomepage from "../components/ScrawlyHomepage";
 
 
 // Envoyer des données du state au composant
 const mapStateToProps = state => {
     return {
-        scrawlies: state.scrawly.scrawlies,
-        slug: state.scrawly.scrawl.slug
+        slug: state.scrawly.scrawl.slug,
+        id: state.scrawly.scrawl["@id"]
     }
 };
 
 // Envoyer des actions au composant
 const mapDispatchToProps = dispatch => ({
-    add: scrawly => dispatch(scrawlyAdd(scrawly)),
-    remove: scrawly => dispatch(scrawlyRemove(scrawly)),
     updateSlug: slug => dispatch(updateSlug(slug)),
+    search: slug => dispatch(searchScrawl(slug))
 });
 
 export default connect(

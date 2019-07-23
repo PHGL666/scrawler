@@ -16,10 +16,11 @@ function App() {
                 <Route path="/" exact component={ScrawlyHomepage}/>
                 <Route path="/ScrawlyInitiate" exact component={NewScrawlyInitiate}/>
                 <Route path="/ScrawlyEdit" exact component={NewScrawlyEdit}/>
-                <Route path="/ScrawlyMaster" exact componoent={Scrawly_1_master}/>
+                <Route path="/ScrawlyMaster/:slug" exact component={Scrawly_1_master}/>
+                <Route path="/ScrawlyMaster" exact component={Scrawly_1_master}/>
             </Switch>
         </div>
     );
 }
-
+// : deux point c'est le paramètre
 export default App;

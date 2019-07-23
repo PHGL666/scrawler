@@ -1,4 +1,11 @@
-import {SCRAWLY_ADD, SCRAWLY_REMOVE, UPDATE_SLUG, UPDATE_TITLE} from '../actions/scrawly';
+import {
+    SCRAWLY_ADD,
+    SCRAWLY_REMOVE,
+    UPDATE_SLUG,
+    UPDATE_TITLE,
+    SEARCH_SCRAWL_SUCCESS,
+    SEARCH_SCRAWL_ERROR
+} from '../actions/scrawly';
 import slugify from "slugify";
 
 const initialState = {
@@ -10,7 +17,8 @@ const initialState = {
         ],
         persons: [
 
-        ]
+        ],
+        error: "",
     }
 };
 
@@ -29,6 +37,16 @@ function scrawlyApp(state = initialState, action) {
             return {
                 ...state,
                 scrawl: { ...state.scrawl, title: action.payload, slug: slugify(action.payload, {lower: true}) }
+            };
+        case SEARCH_SCRAWL_SUCCESS:
+            return {
+                ...state,
+                scrawl: action.payload
+            };
+        case SEARCH_SCRAWL_ERROR:
+            return {
+                ...state,
+                error: "Scrawly introuvable !"
             };
         default:
             return state;// en entre il prend le state initale, il modifie le state, et renvoie le state modifié.
