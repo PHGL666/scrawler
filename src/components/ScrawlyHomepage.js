@@ -4,7 +4,14 @@ import {NavLink} from "react-router-dom";
 
 class ScrawlyHomepage extends Component {
 
-
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.add({
+            value: this.state.value,
+            done: false
+        });
+        this.setState({value: ""}); // remet la valeur à vide
+    }
 
     render() {
         return (
@@ -13,7 +20,7 @@ class ScrawlyHomepage extends Component {
                     <h1><em>SCRAWLY</em></h1>
                     <div>
                         <label htmlFor="slug">Tape ton Slug et rejoints l'évènement !</label><br/>
-                        <input type="text" value={this.props.slug} onChange={event => this.props.updateSlug(event.target.value)} placeholder="Slug de l'évènement"/>
+                        <input type="text" name="slugduscrawly" value={this.props.slug} onChange={event => this.props.updateSlug(event.target.value)} placeholder="Slug de l'évènement"/>
                     <NavLink to='SCRAWLY' type="submit" className="button button-primary">
                         <i>GO !</i>
                     </NavLink>

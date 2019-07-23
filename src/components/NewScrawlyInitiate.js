@@ -24,7 +24,7 @@ class NewScrawlyInitiate extends Component {
                         <div>
                             <label htmlFor="slug">Slug</label><br/>
                             <input type="text" name="slug" value={this.props.slug}
-                                   onChange={event => this.props.updateSlug(event.target.value)} placeholder="Slug du scrawly" readOnly/>
+                                   onChange={event => this.props.updateSlug(event.target.value)} placeholder="Slug du scrawly"/>
                         </div>
                         <NavLink to='/ScrawlyEdit' type="submit" className="button btn">
                             <i className="fa fa-long-arrow-right"> <strong>Créer votre Scrawly & ajouter des dates

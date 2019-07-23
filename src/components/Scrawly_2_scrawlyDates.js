@@ -24,18 +24,10 @@ class Scrawly_2_scrawlyDates extends Component {
 
     render() {
         return (
-            <div>
-                <thead>
-                <tr>
-                    <th>
-                        <div className="date-container">
-                            <div className="month">MOIS</div>
-                            <div className="date">DATE</div>
-                            <div className="day">JOUR</div>
-                        </div>
-                    </th>
-                </tr>
-                </thead>
+            <div className="date-container">
+                <div className="month">MOIS</div>
+                <div className="date">DATE</div>
+                <div className="day">JOUR</div>
             </div>
         );
     }

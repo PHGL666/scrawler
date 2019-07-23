@@ -4,6 +4,7 @@ export const SCRAWLY_REMOVE = 'SCRAWLY_REMOVE';
 export const UPDATE_SLUG = "UPDATE_SLUG";
 export const UPDATE_TITLE= "UPDATE_TITLE";
 
+
 // Action pour ajouter un scrawly
 export function scrawlyAdd(scrawly) {
     return {
@@ -34,4 +35,8 @@ export function updateTitle(title) {
         type: UPDATE_TITLE,
         payload: title
     };
+}
+
+export function searchScrawl(slug) {
+    fetch(process.env.REACT_APP_API + '/polls?slug=' + slug)
 }

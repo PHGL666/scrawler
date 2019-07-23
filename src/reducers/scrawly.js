@@ -23,12 +23,12 @@ function scrawlyApp(state = initialState, action) {
         case UPDATE_SLUG:
             return {
                 ...state,
-                scrawl: { ...state.scrawl, slug: slugify(action.payload) }
+                scrawl: { ...state.scrawl, slug: slugify(action.payload, {lower: true}) }
             };
         case UPDATE_TITLE:
             return {
                 ...state,
-                scrawl: { ...state.scrawl, title: action.payload, slug: slugify(action.payload) }
+                scrawl: { ...state.scrawl, title: action.payload, slug: slugify(action.payload, {lower: true}) }
             };
         default:
             return state;// en entre il prend le state initale, il modifie le state, et renvoie le state modifié.

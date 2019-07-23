@@ -34,11 +34,7 @@ class Scrawly_1_master extends Component {
                         <thead>
                         <tr>
                             <th>
-                                <div className="date-container">
-                                    <div className="month">MOIS</div>
-                                    <div className="date">DATE</div>
-                                    <div className="day">JOUR</div>
-                                </div>
+APPEL LE COMPOSANT DATE
                             </th>
                         </tr>
                         </thead>

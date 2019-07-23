@@ -9,7 +9,6 @@ import NewScrawlyInitiate from "./containers/NewScrawlyInitiate";
 import NewScrawlyEdit from "./containers/NewScrawlyEdit";
 import Scrawly_1_master from "./containers/Scrawly_1_master";
 
-
 function App() {
     return (
         <div className="App">
