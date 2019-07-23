@@ -7,7 +7,8 @@ import ScrawlyHomepage from "../components/ScrawlyHomepage";
 const mapStateToProps = state => {
     return {
         slug: state.scrawly.scrawl.slug,
-        id: state.scrawly.scrawl["@id"]
+        id: state.scrawly.scrawl["@id"],
+        error: state.scrawly.error
     }
 };
 

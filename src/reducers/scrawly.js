@@ -17,9 +17,9 @@ const initialState = {
         ],
         persons: [
 
-        ],
-        error: "",
-    }
+        ]
+    },
+    error: ""
 };
 
 function scrawlyApp(state = initialState, action) {
@@ -41,12 +41,13 @@ function scrawlyApp(state = initialState, action) {
         case SEARCH_SCRAWL_SUCCESS:
             return {
                 ...state,
-                scrawl: action.payload
+                scrawl: action.payload,
+                error: ""
             };
         case SEARCH_SCRAWL_ERROR:
             return {
                 ...state,
-                error: "Scrawly introuvable !"
+                error: "Ce scrawly est introuvable banane !"
             };
         default:
             return state;// en entre il prend le state initale, il modifie le state, et renvoie le state modifié.

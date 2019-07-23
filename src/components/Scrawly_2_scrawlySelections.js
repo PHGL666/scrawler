@@ -1,31 +1,18 @@
 import React, {Component} from 'react';
 
 class Scrawly_2_scrawlySelections extends Component {
-    // 2 il faut un state pour gérer la valeur de l'input donc on créer le constructor
-    constructor(props) {
-        super(props);
-        this.state = {value: ""};
-    }
-
-    // 3 le handleChange est toujours pareil. Permet juste de récupérer la valeur saisie dans le formulaire
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-    // 5 on crée le handleSUbmit qui gère lorsqu'on clique sur le bouton submit
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.add({
-            value: this.state.value,
-            done: false
-        });
-        this.setState({value: ""}); // remet la valeur à vide
-    }
 
     render() {
         return (
             <div>
-
+                <td>
+                    <div className="user-container">
+                        <img src="GRAVATAR" alt="x"/>
+                        <span>FULL NAME</span>
+                    </div>
+                </td>
+                <td className="available"><i className="fa fa-3x fa-check-circle"> SELECTIONS CASE </i></td>
+                <td><a href="EDITER LA SELECTION"><i className="fa fa-2x fa-edit"> </i></a> </td>
             </div>
         );
     }

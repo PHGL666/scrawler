@@ -11,7 +11,6 @@ class ScrawlyHomepage extends Component {
         //this.setState({value: ""}); // remet la valeur à vide
     }
 
-
     render() {
 
         if (this.props.id) {
@@ -28,6 +27,7 @@ class ScrawlyHomepage extends Component {
                                onChange={event => this.props.updateSlug(event.target.value)} placeholder="Slug de l'évènement"/>
                     <input type="submit" value="GO !"/>
                 </form>
+                <p>{this.props.error}</p>
                     <NavLink to='ScrawlyInitiate' type="submit" className="button btn">
                         <i className="fa fa-plus"> <strong>Créer un nouveau Scrawly</strong></i>
                     </NavLink>
