@@ -13,12 +13,12 @@ import Scrawly_1_master from "./containers/Scrawly_1_master";
 function App() {
     return (
         <div className="App">
-                <Switch>
-                    <Route path="/" exact component={ScrawlyHomepage} />
-                    <Route path="/ScrawlyInitate" exact component={NewScrawlyInitiate} />
-                    <Route path="/ScrawlyEdit" exact component={NewScrawlyEdit} />
-                    <Route path="/ScrawlyMaster" exact componoent={Scrawly_1_master} />
-                </Switch>
+            <Switch>
+                <Route path="/" exact component={ScrawlyHomepage}/>
+                <Route path="/ScrawlyInitiate" exact component={NewScrawlyInitiate}/>
+                <Route path="/ScrawlyEdit" exact component={NewScrawlyEdit}/>
+                <Route path="/ScrawlyMaster" exact componoent={Scrawly_1_master}/>
+            </Switch>
         </div>
     );
 }

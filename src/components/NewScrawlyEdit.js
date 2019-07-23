@@ -23,9 +23,6 @@ class NewScrawlyEdit extends Component {
         this.setState({value: ""}); // remet la valeur à vide
     }
 
-    /* 1 ligne 30 on crée le formulaire*/
-
-    /* 4 ligne 34 on rajoute la valeur et dans dans le handlechange on appelle l'evenenent event et on l'envoie au handlechange(event) pour se renouveller */
     render() {
         return (
             <div>
@@ -35,7 +32,7 @@ class NewScrawlyEdit extends Component {
                 <section className="container form-new">
                     <form onSubmit={event => this.handleSubmit(event)}>
                         <div>
-                            <label htmlFor="title">Titre</label><br/>
+                            <label htmlFor="title">Titre</label>
                             <input type="text" name="title" value={this.state.value}
                                    onChange={event => this.handleChange(event)} placeholder="Anniversaire de Johny"/>
                         </div>
@@ -50,9 +47,9 @@ class NewScrawlyEdit extends Component {
                                    onChange={event => this.addDate(event)}/>
                         </div>
                         <div>
-                            <button type="submit" className="button button-primary"><i className="fa fa-plus"> Ajouter une date</i></button>
+                            <button type="submit" className="button button-primary"><i className="fa fa-plus"> <strong>Ajouter une date</strong></i></button>
                         </div>
-                        <NavLink to="/ScrawlyMaster" type="submit" className="button btn"><i className="fa fa-check"> VALIDER</i></NavLink>
+                        <NavLink to="/ScrawlyMaster" type="submit" className="button btn"><i className="fa fa-check"> <strong>VALIDER</strong></i></NavLink>
                     </form>
                 </section>
 
