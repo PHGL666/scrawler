@@ -15,12 +15,12 @@ class NewScrawlyInitiate extends Component {
 
     render() {
         if (this.props.id) {
-            return <Redirect to={"/ScrawlyEdit/" + this.props.slug}/>
+            return <Redirect to={"/ScrawlyEdit/"}/>
         }
         return (
             <div>
                 <section className="bg-blue">
-                    <h1>INITIALISER UN SCRAWLY</h1>
+                    <h1>INITIALISER VOTRE SCRAWLY</h1>
                 </section>
                 <section className="container form-new">
                     <form onSubmit={event => this.handleSubmit(event)}>
@@ -28,20 +28,21 @@ class NewScrawlyInitiate extends Component {
                             <label htmlFor="title">Titre</label><br/>
                             <input type="text" name="title" value={this.props.title}
                                    onChange={event => this.props.updateTitle(event.target.value)}
-                                   placeholder="Anniversaire de Johny"/>
+                                   placeholder="Titre du Scrawly"/>
                         </div>
                         <div>
                             <label htmlFor="slug">Slug</label><br/>
                             <input type="text" name="slug" value={this.props.slug}
                                    onChange={event => this.props.updateSlug(event.target.value)}
-                                   placeholder="Slug du scrawly"/>
+                                   placeholder="Slug du Scrawly"/>
                         </div>
                         <button type="submit" className="button btn">
                             <i className={"fa " + (this.props.loading ? "fa-spinner fa-pulse" : "fa-long-arrow-right")}>
-                                <strong>Créer votre Scrawly & ajouter des dates
+                                <strong> Créer votre Scrawly & ajouter des dates
                                     !</strong></i>
                         </button>
                     </form>
+                    <p>{this.props.error}</p>
                 </section>
 
             </div>
@@ -50,4 +51,3 @@ class NewScrawlyInitiate extends Component {
 }
 
 export default NewScrawlyInitiate;
-

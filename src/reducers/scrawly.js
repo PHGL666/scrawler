@@ -5,7 +5,7 @@ import {
     SEARCH_SCRAWL_ERROR,
     CREATE_SCRAWL_LOADING,
     CREATE_SCRAWL_SUCCESS,
-    CREATE_SCRAWL_ERROR,
+    CREATE_SCRAWL_ERROR, EDIT_ADD_DATE,
 
 } from '../actions/scrawly';
 import slugify from "slugify";
@@ -14,12 +14,8 @@ const initialState = {
     scrawl: {
         title: "",
         slug: "",
-        choices: [
-
-        ],
-        persons: [
-
-        ]
+        choices: [],
+        persons: []
     },
     error: "",
     scrawlLoading: false,
@@ -31,12 +27,12 @@ function scrawlyApp(state = initialState, action) {
         case UPDATE_SLUG:
             return {
                 ...state,
-                scrawl: { ...state.scrawl, slug: slugify(action.payload, {lower: true}) }
+                scrawl: {...state.scrawl, slug: slugify(action.payload, {lower: true})}
             };
         case UPDATE_TITLE:
             return {
                 ...state,
-                scrawl: { ...state.scrawl, title: action.payload, slug: slugify(action.payload, {lower: true}) }
+                scrawl: {...state.scrawl, title: action.payload, slug: slugify(action.payload, {lower: true})}
             };
         case SEARCH_SCRAWL_SUCCESS:
             return {
@@ -51,8 +47,8 @@ function scrawlyApp(state = initialState, action) {
             };
         case CREATE_SCRAWL_LOADING:
             return {
-              ...state,
-              createScrawlLoading: true
+                ...state,
+                createScrawlLoading: true
             };
         case CREATE_SCRAWL_SUCCESS:
             return {
@@ -65,6 +61,11 @@ function scrawlyApp(state = initialState, action) {
                 ...state,
                 error: "Erreur lors de la création du Scrawly",
                 createScrawlLoading: false
+            };
+        case EDIT_ADD_DATE:
+            return {
+                ...state,
+                editAddDate: action.payload
             };
         default:
             return state;// en entre il prend le state initale, il modifie le state, et renvoie le state modifié.

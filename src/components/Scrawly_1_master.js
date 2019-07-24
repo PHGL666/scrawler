@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
+import md5 from 'md5';
 
 
 class Scrawly_1_master extends Component {
 
+
+
     render() {
+
+        let gravatar = 'https://www.gravatar.com/avatar/' + md5('email du state ici') + '?s=32&d=robohash';
+
         return (
             <div>
                 <section className="bg-blue">
@@ -20,6 +26,9 @@ class Scrawly_1_master extends Component {
                         </tr>
                         </thead>
                         <tbody>
+
+                        <img src={gravatar} alt="Avatar"/>
+
                         <tr>
                             APPELE LE COMPOSANT SCRAWLY 2 SELECTION
                         </tr>

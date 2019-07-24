@@ -6,6 +6,7 @@ export const SEARCH_SCRAWL_ERROR = "SEARCH_SCRAWL_ERROR";
 export const CREATE_SCRAWL_LOADING = "CREATE_SCRAWL_LOADING";
 export const CREATE_SCRAWL_SUCCESS = "CREATE_SCRAWL_SUCCESS";
 export const CREATE_SCRAWL_ERROR = "CREATE_SCRAWL_ERROR";
+export const EDIT_ADD_DATE = "EDIT_ADD_DATE";
 
 // Action pour updater le slug
 export function updateSlug(slug) {
@@ -91,4 +92,11 @@ export function createScrawlError() {
 export function createScrawlLoading() {
     return {
         type: CREATE_SCRAWL_LOADING};
+}
+
+export function editAddDate(date) {
+    return {
+        type: EDIT_ADD_DATE,
+        payload: date
+    }
 }

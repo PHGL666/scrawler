@@ -10,16 +10,16 @@ class NewScrawlyEdit extends Component {
 
     // 3 le handleChange est toujours pareil. Permet juste de récupérer la valeur saisie dans le formulaire
     handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
+        this.setState({[event.target.date]: event.target.value});
     }
 
     // 5 on crée le handleSUbmit qui gère lorsqu'on clique sur le bouton submit
     handleSubmit(event) {
         event.preventDefault();
         if (!this.props.loading) {
-            this.props.createScrawl({
+            this.props.editAddDate({
                 title: this.props.title,
-                slug: this.props.slug
+                date: this.props.date
             });
             this.setState({value: ""}); // remet la valeur à vide
         }
@@ -38,23 +38,23 @@ class NewScrawlyEdit extends Component {
                     <form onSubmit={event => this.handleSubmit(event)}>
                         <div>
                             <label htmlFor="title">Titre</label>
-                            <input type="text" name="title" value={this.state.value}
+                            <input type="text" name="title" value={this.props.scrawl.title}
                                    onChange={event => this.handleChange(event)} placeholder="Anniversaire de Johny"/>
                         </div>
                         <div>
                             <p>Proposez des dates pour votre évènement :</p>
                             <ul>
-                                <li>dates ajoutées</li>
-                                <li>dates ajoutées</li>
-                                <li>dates ajoutées</li>
+                                <li>{this.props.date}</li>
                             </ul>
-                            <input type="date" name="date" value={this.state.value}
-                                   onChange={event => this.addDate(event)}/>
+                            <input type="date" name="date" value={this.props.date}
+                                   onChange={event => this.handleChange(event)}/><br/>
+                            <button type="submit" className="button button-primary"><i className="fa fa-plus"> <strong>Ajouter
+                                une date</strong></i></button>
                         </div>
                         <div>
-                            <button type="submit" className="button button-primary"><i className="fa fa-plus"> <strong>Ajouter une date</strong></i></button>
                         </div>
-                        <NavLink to="/ScrawlyMaster" type="submit" className="button btn"><i className="fa fa-check"> <strong>VALIDER</strong></i></NavLink>
+                        <NavLink to="/ScrawlyMaster" type="submit" className="button btn"><i className="fa fa-check">
+                            <strong>VALIDER</strong></i></NavLink>
                     </form>
                 </section>
 
