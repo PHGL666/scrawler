@@ -1,10 +1,12 @@
 import {
-    SCRAWLY_ADD,
-    SCRAWLY_REMOVE,
     UPDATE_SLUG,
     UPDATE_TITLE,
     SEARCH_SCRAWL_SUCCESS,
-    SEARCH_SCRAWL_ERROR
+    SEARCH_SCRAWL_ERROR,
+    CREATE_SCRAWL_LOADING,
+    CREATE_SCRAWL_SUCCESS,
+    CREATE_SCRAWL_ERROR,
+
 } from '../actions/scrawly';
 import slugify from "slugify";
 
@@ -19,15 +21,13 @@ const initialState = {
 
         ]
     },
-    error: ""
+    error: "",
+    scrawlLoading: false,
+    createScrawlLoading: false
 };
 
 function scrawlyApp(state = initialState, action) {
     switch (action.type) {
-        case SCRAWLY_ADD:
-            return {scrawlies: [...state.scrawlies, action.payload]};// tu prends tous les items existant (...) et tu rajoutes le dernier item crée. Le spread operator permet de ne pas recréer un tableau dans un tableau.
-        case SCRAWLY_REMOVE:
-            return {scrawlies: state.scrawlies.filter(i => i !== action.payload)};
         case UPDATE_SLUG:
             return {
                 ...state,
@@ -48,6 +48,23 @@ function scrawlyApp(state = initialState, action) {
             return {
                 ...state,
                 error: "Ce scrawly est introuvable banane !"
+            };
+        case CREATE_SCRAWL_LOADING:
+            return {
+              ...state,
+              createScrawlLoading: true
+            };
+        case CREATE_SCRAWL_SUCCESS:
+            return {
+                ...state,
+                scrawl: action.payload,
+                createScrawlLoading: false
+            };
+        case CREATE_SCRAWL_ERROR:
+            return {
+                ...state,
+                error: "Erreur lors de la création du Scrawly",
+                createScrawlLoading: false
             };
         default:
             return state;// en entre il prend le state initale, il modifie le state, et renvoie le state modifié.

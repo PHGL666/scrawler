@@ -22,6 +22,7 @@ function App() {
         </div>
     );
 }
+
 // : deux point c'est le paramètre
 export default App;
 

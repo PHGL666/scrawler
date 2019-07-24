@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
-import {NavLink} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 class NewScrawlyInitiate extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.createScrawl(this.props.title, this.props.slug);
+        if (!this.props.loading) {
+            this.props.createScrawl({
+                title: this.props.title,
+                slug: this.props.slug
+            });
+        }
     }
 
     render() {
+        if (this.props.id) {
+            return <Redirect to={"/ScrawlyEdit/" + this.props.slug}/>
+        }
         return (
             <div>
                 <section className="bg-blue">
@@ -19,17 +27,20 @@ class NewScrawlyInitiate extends Component {
                         <div>
                             <label htmlFor="title">Titre</label><br/>
                             <input type="text" name="title" value={this.props.title}
-                                   onChange={event => this.props.updateTitle(event.target.value)} placeholder="Anniversaire de Johny"/>
+                                   onChange={event => this.props.updateTitle(event.target.value)}
+                                   placeholder="Anniversaire de Johny"/>
                         </div>
                         <div>
                             <label htmlFor="slug">Slug</label><br/>
                             <input type="text" name="slug" value={this.props.slug}
-                                   onChange={event => this.props.updateSlug(event.target.value)} placeholder="Slug du scrawly"/>
+                                   onChange={event => this.props.updateSlug(event.target.value)}
+                                   placeholder="Slug du scrawly"/>
                         </div>
-                        <NavLink to='/ScrawlyEdit' type="submit" className="button btn">
-                            <i className="fa fa-long-arrow-right"> <strong>Créer votre Scrawly & ajouter des dates
-                                !</strong></i>
-                        </NavLink>
+                        <button type="submit" className="button btn">
+                            <i className={"fa " + (this.props.loading ? "fa-spinner fa-pulse" : "fa-long-arrow-right")}>
+                                <strong>Créer votre Scrawly & ajouter des dates
+                                    !</strong></i>
+                        </button>
                     </form>
                 </section>
 

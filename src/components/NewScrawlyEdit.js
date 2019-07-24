@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 class NewScrawlyEdit extends Component {
     // 2 il faut un state pour gérer la valeur de l'input donc on créer le constructor
@@ -16,14 +16,19 @@ class NewScrawlyEdit extends Component {
     // 5 on crée le handleSUbmit qui gère lorsqu'on clique sur le bouton submit
     handleSubmit(event) {
         event.preventDefault();
-        this.props.add({
-            value: this.state.value,
-            done: false
-        });
-        this.setState({value: ""}); // remet la valeur à vide
+        if (!this.props.loading) {
+            this.props.createScrawl({
+                title: this.props.title,
+                slug: this.props.slug
+            });
+            this.setState({value: ""}); // remet la valeur à vide
+        }
     }
 
     render() {
+        if (this.props.id) {
+            return <Redirect to={"/ScrawlyMaster/" + this.props.slug}/>
+        }
         return (
             <div>
                 <section className="bg-blue">

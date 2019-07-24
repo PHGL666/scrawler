@@ -1,27 +1,11 @@
 // Création de constantes pour stocker le nom des actions
-export const SCRAWLY_ADD = 'SCRAWLY_ADD';
-export const SCRAWLY_REMOVE = 'SCRAWLY_REMOVE';
 export const UPDATE_SLUG = "UPDATE_SLUG";
 export const UPDATE_TITLE = "UPDATE_TITLE";
 export const SEARCH_SCRAWL_SUCCESS = "SEARCH_SCRAWL_SUCCESS";
 export const SEARCH_SCRAWL_ERROR = "SEARCH_SCRAWL_ERROR";
-
-
-// Action pour ajouter un scrawly
-export function scrawlyAdd(scrawly) {
-    return {
-        type: SCRAWLY_ADD,
-        payload: scrawly
-    };
-}
-
-// Action pour supprimer un scrawly
-export function scrawlyRemove(scrawly) {
-    return {
-        type: SCRAWLY_REMOVE,
-        payload: scrawly
-    };
-}
+export const CREATE_SCRAWL_LOADING = "CREATE_SCRAWL_LOADING";
+export const CREATE_SCRAWL_SUCCESS = "CREATE_SCRAWL_SUCCESS";
+export const CREATE_SCRAWL_ERROR = "CREATE_SCRAWL_ERROR";
 
 // Action pour updater le slug
 export function updateSlug(slug) {
@@ -66,4 +50,45 @@ export function searchScrawlError() {
         type: SEARCH_SCRAWL_ERROR,
         payload: null
     }
+}
+
+
+//CREATE SCRAWLY
+export function createScrawl(scrawl) {
+    return dispatch => {
+        dispatch(createScrawlLoading());
+        fetch(process.env.REACT_APP_API + '/polls', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(scrawl) // stringify modifie en chaîne de caractère
+        })
+            .then(response => response.json()) // on appelle une répnonse qu'on convertie en json
+            .then(data => {
+                if (data["@type"] !== "hydra:Error") {
+                    dispatch(createScrawlSuccess(data)
+                    )
+                } else {
+                    dispatch(createScrawlError());
+                }
+            });
+    };
+}
+
+export function createScrawlSuccess(scrawl) {
+    return {
+        type: CREATE_SCRAWL_SUCCESS,
+        payload: scrawl
+    }
+}
+
+export function createScrawlError() {
+    return {
+        type: CREATE_SCRAWL_ERROR};
+}
+
+export function createScrawlLoading() {
+    return {
+        type: CREATE_SCRAWL_LOADING};
 }
