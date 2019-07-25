@@ -22,7 +22,6 @@ const initialState = {
     error: "",
     scrawlLoading: false,
     createScrawlLoading: false
-
 };
 
 function scrawlyApp(state = initialState, action) {
