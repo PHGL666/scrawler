@@ -8,6 +8,7 @@ import {
     CREATE_SCRAWL_SUCCESS,
     CREATE_SCRAWL_ERROR,
     CHOICES_CREATE_SUCCESS,
+    CHOICES_CREATE_ERROR,
 } from '../actions/scrawly';
 import slugify from "slugify";
 
@@ -70,10 +71,16 @@ function scrawlyApp(state = initialState, action) {
                 createScrawlLoading: false
             };
         case CHOICES_CREATE_SUCCESS:
-            return {
-                ...state,
+                return {
+                    ...state,
                 choices: action.payload,
             };
+        case CHOICES_CREATE_ERROR:
+            return {
+                ...state,
+                error: "La date a déjà été sélectionnée !",
+            };
+
 
         default:
             return state;// en entre il prend le state initale, il modifie le state, et renvoie le state modifié.

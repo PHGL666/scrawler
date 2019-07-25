@@ -8,6 +8,7 @@ const mapStateToProps = state => {
     return {
         scrawl: state.scrawly.scrawl,
         poll: state.scrawly.scrawl["@id"],
+        error: state.scrawly.error,
     }
 };
 

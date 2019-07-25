@@ -23,7 +23,7 @@ class NewScrawlyInitiate extends Component {
                     <h1>INITIALISER VOTRE SCRAWLY</h1>
                 </section>
                 <section className="container form-new">
-                    <form onSubmit={event => this.handleSubmit(event)}>
+                    <form className="form-new" onSubmit={event => this.handleSubmit(event)}>
                         <div>
                             <label htmlFor="title">Titre</label><br/>
                             <input type="text" name="title" value={this.props.title}

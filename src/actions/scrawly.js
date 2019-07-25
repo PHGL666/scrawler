@@ -7,7 +7,6 @@ export const SEARCH_SCRAWL_ERROR = "SEARCH_SCRAWL_ERROR";
 export const CREATE_SCRAWL_LOADING = "CREATE_SCRAWL_LOADING";
 export const CREATE_SCRAWL_SUCCESS = "CREATE_SCRAWL_SUCCESS";
 export const CREATE_SCRAWL_ERROR = "CREATE_SCRAWL_ERROR";
-export const CHOICES_CREATE = "CHOICES_CREATE";
 export const CHOICES_CREATE_SUCCESS = "CHOICES_CREATE_SUCCESS";
 export const CHOICES_CREATE_ERROR = "CHOICES_CREATE_ERROR";
 
@@ -109,7 +108,7 @@ export function createScrawlLoading() {
 // CHOICES (EDIT) CREATE
 export function choicesCreate(choices) {
     return dispatch => {
-        //dispatch(choicesCreateSuccess());
+        //dispatch(choicesCreate());
         fetch(process.env.REACT_APP_API + '/choices', {
             method: 'POST',
             headers: {

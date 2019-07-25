@@ -3,11 +3,6 @@ import {NavLink, Redirect} from "react-router-dom";
 
 class NewScrawlyEdit extends Component {
 
-    componentDidMount() {
-        const slug = /[^/]*$/.exec(this.props.location.pathname)[0];
-        this.props.search(slug);
-    }
-
     handleSubmit(event) {
         event.preventDefault();
         this.props.choicesCreate({
@@ -16,7 +11,6 @@ class NewScrawlyEdit extends Component {
             }
         );
     }
-
 
     render() {
         if (this.props.id) {
@@ -34,7 +28,7 @@ class NewScrawlyEdit extends Component {
                         <li>{this.props.scrawl.choices}</li>
                     </ul>
 
-                    <form onSubmit={event => this.handleSubmit(event)}>
+                    <form className="form-new" onSubmit={event => this.handleSubmit(event)}>
                         <div>
                             <input type="date" name="date" value={this.props.scrawl.choices}
                                    onChange={event => this.props.updateChoices(event.target.value)}/><br/>
@@ -42,6 +36,7 @@ class NewScrawlyEdit extends Component {
                                 une date</strong></i></button>
                         </div>
                         <div>
+                            <p>{this.props.error}</p>
                         </div>
                         <NavLink to="/ScrawlyMaster" type="submit" className="button btn"><i className="fa fa-check">
                             <strong>VALIDER</strong></i></NavLink>
