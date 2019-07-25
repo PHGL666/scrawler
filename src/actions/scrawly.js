@@ -1,12 +1,12 @@
 // Création de constantes pour stocker le nom des actions
 export const UPDATE_SLUG = "UPDATE_SLUG";
 export const UPDATE_TITLE = "UPDATE_TITLE";
+export const UPDATE_CHOICES = "UPDATE_CHOICES";
 export const SEARCH_SCRAWL_SUCCESS = "SEARCH_SCRAWL_SUCCESS";
 export const SEARCH_SCRAWL_ERROR = "SEARCH_SCRAWL_ERROR";
 export const CREATE_SCRAWL_LOADING = "CREATE_SCRAWL_LOADING";
 export const CREATE_SCRAWL_SUCCESS = "CREATE_SCRAWL_SUCCESS";
 export const CREATE_SCRAWL_ERROR = "CREATE_SCRAWL_ERROR";
-export const EDIT_ADD_DATE = "EDIT_ADD_DATE";
 
 // Action pour updater le slug
 export function updateSlug(slug) {
@@ -22,6 +22,14 @@ export function updateTitle(title) {
         type: UPDATE_TITLE,
         payload: title
     };
+}
+
+// Action pour update les dates dans NewScrawlyEdit
+export function updateChoices(choices) {
+    return {
+        type: UPDATE_CHOICES,
+        payload: choices
+    }
 }
 
 // cette function native fetch (on peut aussi utiliser axios) appelle la base de donnée
@@ -94,9 +102,3 @@ export function createScrawlLoading() {
         type: CREATE_SCRAWL_LOADING};
 }
 
-export function editAddDate(date) {
-    return {
-        type: EDIT_ADD_DATE,
-        payload: date
-    }
-}

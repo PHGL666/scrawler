@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {createScrawl, updateSlug, updateTitle} from "../actions/scrawly";
+import {createScrawl, updateSlug, updateTitle, createScrawlError} from "../actions/scrawly";
 import NewScrawlyInitiate from "../components/NewScrawlyInitiate";
 
 
@@ -10,7 +10,7 @@ const mapStateToProps = state => {
         title: state.scrawly.scrawl.title,
         loading: state.scrawly.createScrawlLoading,
         id: state.scrawly.scrawl["@id"],
-        error: state.scrawly.createScrawlLoading
+        error: state.scrawly.createScrawlError
     }
 };
 
@@ -18,7 +18,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     updateSlug: slug => dispatch(updateSlug(slug)),
     updateTitle: title => dispatch(updateTitle(title)),
-    createScrawl: scrawl => dispatch(createScrawl(scrawl))
+    createScrawl: scrawl => dispatch(createScrawl(scrawl)),
+    createScrawlError: error => dispatch(createScrawlError(error))
 });
 
 export default connect(

@@ -5,8 +5,8 @@ import {
     SEARCH_SCRAWL_ERROR,
     CREATE_SCRAWL_LOADING,
     CREATE_SCRAWL_SUCCESS,
-    CREATE_SCRAWL_ERROR, EDIT_ADD_DATE,
-
+    CREATE_SCRAWL_ERROR,
+    UPDATE_CHOICES,
 } from '../actions/scrawly';
 import slugify from "slugify";
 
@@ -20,6 +20,7 @@ const initialState = {
     error: "",
     scrawlLoading: false,
     createScrawlLoading: false
+
 };
 
 function scrawlyApp(state = initialState, action) {
@@ -33,6 +34,11 @@ function scrawlyApp(state = initialState, action) {
             return {
                 ...state,
                 scrawl: {...state.scrawl, title: action.payload, slug: slugify(action.payload, {lower: true})}
+            };
+        case UPDATE_CHOICES:
+            return {
+                ...state,
+                scrawl: {...state.scrawl, choices: action.payload }
             };
         case SEARCH_SCRAWL_SUCCESS:
             return {
@@ -62,11 +68,7 @@ function scrawlyApp(state = initialState, action) {
                 error: "Erreur lors de la création du Scrawly",
                 createScrawlLoading: false
             };
-        case EDIT_ADD_DATE:
-            return {
-                ...state,
-                editAddDate: action.payload
-            };
+
         default:
             return state;// en entre il prend le state initale, il modifie le state, et renvoie le state modifié.
     }

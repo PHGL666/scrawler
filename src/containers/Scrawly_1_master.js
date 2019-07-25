@@ -5,7 +5,7 @@ import Scrawly_1_master from "../components/Scrawly_1_master";
 // Envoyer des données du state au composant
 const mapStateToProps = state => {
     return {
-        scrawl: state.scrawl
+        scrawl: state.scrawly.scrawl
     }
 };
 
