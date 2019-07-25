@@ -4,8 +4,9 @@ import {NavLink, Redirect} from "react-router-dom";
 class NewScrawlyEdit extends Component {
     handleSubmit(event) {
         event.preventDefault();
-        this.props.updateChoices({
+        this.props.choicesShow({
                 choices: this.props.scrawl.choices,
+                title: this.props.scrawl.title
             }
         );
     }
@@ -18,7 +19,7 @@ class NewScrawlyEdit extends Component {
         return (
             <div>
                 <section className="bg-blue">
-                    <h1>{this.props.scrawl.title}</h1>
+                    <h1>TITRE : {this.props.scrawl.title}</h1>
                 </section>
 
                 <section className="container form-new">

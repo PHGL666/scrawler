@@ -7,6 +7,9 @@ export const SEARCH_SCRAWL_ERROR = "SEARCH_SCRAWL_ERROR";
 export const CREATE_SCRAWL_LOADING = "CREATE_SCRAWL_LOADING";
 export const CREATE_SCRAWL_SUCCESS = "CREATE_SCRAWL_SUCCESS";
 export const CREATE_SCRAWL_ERROR = "CREATE_SCRAWL_ERROR";
+export const CHOICES_CREATE = "CHOICES_CREATE";
+export const CHOICES_CREATE_SUCCESS = "CHOICES_CREATE_SUCCESS";
+export const CHOICES_CREATE_ERROR = "CHOICES_CREATE_ERROR";
 
 // Action pour updater le slug
 export function updateSlug(slug) {
@@ -102,3 +105,38 @@ export function createScrawlLoading() {
         type: CREATE_SCRAWL_LOADING};
 }
 
+
+// CHOICES (EDIT) CREATE
+export function choicesCreate(scrawl) {
+    return dispatch => {
+        dispatch(choicesCreateSuccess());
+        fetch(process.env.REACT_APP_API + '/choices', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(scrawl) // stringify modifie en chaîne de caractère
+        })
+            .then(response => response.json()) // on appelle une réponse qu'on convertie en json
+            .then(data => {
+                if (data["@type"] !== "hydra:Error") {
+                    dispatch(choicesCreate(data)
+                    )
+                } else {
+                    dispatch(choicesCreateError());
+                }
+            });
+    };
+}
+
+export function choicesCreateSuccess(scrawl) {
+    return {
+        type: CREATE_SCRAWL_SUCCESS,
+        payload: scrawl
+    }
+}
+
+export function choicesCreateError() {
+    return {
+        type: CREATE_SCRAWL_ERROR};
+}
