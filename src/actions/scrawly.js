@@ -107,20 +107,20 @@ export function createScrawlLoading() {
 
 
 // CHOICES (EDIT) CREATE
-export function choicesCreate(scrawl) {
+export function choicesCreate(choices) {
     return dispatch => {
-        dispatch(choicesCreateSuccess());
+        //dispatch(choicesCreateSuccess());
         fetch(process.env.REACT_APP_API + '/choices', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(scrawl) // stringify modifie en chaîne de caractère
+            body: JSON.stringify(choices) // stringify modifie en chaîne de caractère
         })
             .then(response => response.json()) // on appelle une réponse qu'on convertie en json
             .then(data => {
                 if (data["@type"] !== "hydra:Error") {
-                    dispatch(choicesCreate(data)
+                    dispatch(choicesCreateSuccess(data)
                     )
                 } else {
                     dispatch(choicesCreateError());
@@ -129,14 +129,14 @@ export function choicesCreate(scrawl) {
     };
 }
 
-export function choicesCreateSuccess(scrawl) {
+export function choicesCreateSuccess(choices) {
     return {
-        type: CREATE_SCRAWL_SUCCESS,
-        payload: scrawl
+        type: CHOICES_CREATE_SUCCESS,
+        payload: choices
     }
 }
 
 export function choicesCreateError() {
     return {
-        type: CREATE_SCRAWL_ERROR};
+        type: CHOICES_CREATE_ERROR};
 }

@@ -4,7 +4,10 @@ import md5 from 'md5';
 
 class Scrawly_1_master extends Component {
 
-
+    componentDidMount() {
+        const slug = /[^/]*$/.exec(this.props.location.pathname)[0];
+        this.props.search(slug);
+    }
 
     render() {
 

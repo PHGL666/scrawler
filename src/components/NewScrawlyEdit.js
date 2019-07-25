@@ -2,11 +2,17 @@ import React, {Component} from 'react';
 import {NavLink, Redirect} from "react-router-dom";
 
 class NewScrawlyEdit extends Component {
+
+    componentDidMount() {
+        const slug = /[^/]*$/.exec(this.props.location.pathname)[0];
+        this.props.search(slug);
+    }
+
     handleSubmit(event) {
         event.preventDefault();
-        this.props.choicesShow({
-                choices: this.props.scrawl.choices,
-                title: this.props.scrawl.title
+        this.props.choicesCreate({
+                date: this.props.scrawl.choices,
+                poll: this.props.scrawl["@id"],
             }
         );
     }
@@ -14,7 +20,7 @@ class NewScrawlyEdit extends Component {
 
     render() {
         if (this.props.id) {
-            return <Redirect to={"/ScrawlyMaster/" + this.props.slug}/>
+            return <Redirect to={"/Scrawly/ScrawlyMaster/" + this.props.slug}/>
         }
         return (
             <div>
@@ -25,13 +31,12 @@ class NewScrawlyEdit extends Component {
                 <section className="container form-new">
                     <ul>
                         <p>Proposez des dates pour votre évènement :</p>
-                            <li>{this.props.scrawl.choices}</li>
+                        <li>{this.props.scrawl.choices}</li>
                     </ul>
 
                     <form onSubmit={event => this.handleSubmit(event)}>
                         <div>
-
-                            <input type="date" name="date" value={this.props.date}
+                            <input type="date" name="date" value={this.props.scrawl.choices}
                                    onChange={event => this.props.updateChoices(event.target.value)}/><br/>
                             <button type="submit" className="button button-primary"><i className="fa fa-plus"> <strong>Ajouter
                                 une date</strong></i></button>

@@ -1,12 +1,13 @@
 import {
     UPDATE_SLUG,
     UPDATE_TITLE,
+    UPDATE_CHOICES,
     SEARCH_SCRAWL_SUCCESS,
     SEARCH_SCRAWL_ERROR,
     CREATE_SCRAWL_LOADING,
     CREATE_SCRAWL_SUCCESS,
     CREATE_SCRAWL_ERROR,
-    UPDATE_CHOICES,
+    CHOICES_CREATE_SUCCESS,
 } from '../actions/scrawly';
 import slugify from "slugify";
 
@@ -38,7 +39,7 @@ function scrawlyApp(state = initialState, action) {
         case UPDATE_CHOICES:
             return {
                 ...state,
-                scrawl: {...state.scrawl, choices: action.payload }
+                scrawl: {...state.scrawl, choices: action.payload}
             };
         case SEARCH_SCRAWL_SUCCESS:
             return {
@@ -67,6 +68,11 @@ function scrawlyApp(state = initialState, action) {
                 ...state,
                 error: "Erreur lors de la création du Scrawly",
                 createScrawlLoading: false
+            };
+        case CHOICES_CREATE_SUCCESS:
+            return {
+                ...state,
+                choices: action.payload,
             };
 
         default:
