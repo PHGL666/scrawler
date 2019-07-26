@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 class NewScrawlyInitiate extends Component {
 
@@ -43,6 +43,11 @@ class NewScrawlyInitiate extends Component {
                         </button>
                     </form>
                     <p>{this.props.error}</p>
+                </section>
+                <section className="container form-new">
+                    <NavLink to='/' type="submit" className="button btn">
+                        <i className="fa"> <strong>Retourner à la Homepage</strong></i>
+                    </NavLink>
                 </section>
 
             </div>

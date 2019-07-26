@@ -50,7 +50,7 @@ function scrawlyApp(state = initialState, action) {
         case SEARCH_SCRAWL_ERROR:
             return {
                 ...state,
-                error: "Ce scrawly est introuvable banane !"
+                error: "Ce scrawly est introuvable pardis !"
             };
         case CREATE_SCRAWL_LOADING:
             return {

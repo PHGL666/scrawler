@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import md5 from 'md5';
+import {NavLink} from "react-router-dom";
 
 
 class Scrawly_1_master extends Component {
@@ -45,7 +46,11 @@ class Scrawly_1_master extends Component {
                         </td>
                         </tbody>
                     </table>
+                    <NavLink to='/' type="submit" className="button btn">
+                        <i className="fa"> <strong>Retourner à la Homepage</strong></i>
+                    </NavLink>
                 </section>
+
             </div>
         );
     }
